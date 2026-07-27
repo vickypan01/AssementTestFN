@@ -68,7 +68,6 @@ const AppHeader = () => {
             Charts
           </Link>
 
-          {/* Vendor Dropdown */}
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setExamplesOpen((prev) => !prev)}

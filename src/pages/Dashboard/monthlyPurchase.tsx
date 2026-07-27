@@ -1,51 +1,28 @@
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
-import { useSelector } from "react-redux";
-
-import type { RootState } from "../../store/redux_store";
-import type { MonthlyPurchaseValue } from "../../Type/type";
+import { Chart } from "react-google-charts";
+import { useAppSelector } from "../../hooks/reduxhooks";
 
 const MonthlyPurchase = () => {
-  const data = useSelector(
-    (state: RootState) => state.dashboard.monthlyPurchaseValue,
-  ) as MonthlyPurchaseValue[];
+  const purchases = useAppSelector(
+    (state) => state.dashboard.monthlyPurchaseValue,
+  );
 
-  const options: Highcharts.Options = {
-    chart: {
-      type: "column",
-    },
+  const data = [
+    ["Month", "Purchase Value"],
+    ...purchases.map((item) => [item.month, item.value]),
+  ];
 
-    title: {
-      text: "Monthly Purchase Value",
-    },
-
-    xAxis: {
-      categories: data.map((item: MonthlyPurchaseValue) => item.month),
-      title: {
-        text: "Month",
-      },
-    },
-
-    yAxis: {
-      title: {
-        text: "Purchase Value",
-      },
-    },
-
-    series: [
-      {
-        type: "column",
-        name: "Purchase Value",
-        data: data.map((item: MonthlyPurchaseValue) => item.value),
-      },
-    ],
-
-    credits: {
-      enabled: false,
-    },
-  };
-
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  return (
+    <Chart
+      chartType="ColumnChart"
+      width="100%"
+      height="350px"
+      data={data}
+      options={{
+        title: "Monthly Purchase Value",
+        legend: { position: "none" },
+      }}
+    />
+  );
 };
 
 export default MonthlyPurchase;

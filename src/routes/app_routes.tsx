@@ -15,7 +15,7 @@ import KPICard from "../pages/KPI/kpidata";
 import VendorTable from "../pages/vendor_directory/venders";
 import VendorDetails from "../pages/vendor_directory/vendorDetails";
 import CreateVendor from "../pages/vendor_directory/createVendor";
-import VendorPerformance from "../pages/vendor_directory/performance";
+import Performance from "../pages/PerformanceData/performancePage";
 import ApprovalWorkflow from "../pages/vendor_directory/approvalWorkflow";
 import Charts from "../pages/Dashboard/charts";
 
@@ -40,12 +40,12 @@ const AppRoutes = createBrowserRouter(
       >
         <Route index element={<KPICard />} />
         <Route path="charts" element={<Charts />} />
-        <Route path="kpi" element={<KPICard />} />
+        <Route path="kpicard" element={<KPICard />} />
 
         <Route path="vendor-directory" element={<VendorTable />} />
         <Route path="create-vendor" element={<CreateVendor />} />
         <Route path="vendors/:vendorId" element={<VendorDetails />} />
-        <Route path="performance" element={<VendorPerformance />} />
+        <Route path="performance" element={<Performance />} />
         <Route path="approval-workflow" element={<ApprovalWorkflow />} />
 
         <Route path="unauthorized" element={<Unauthorized />} />

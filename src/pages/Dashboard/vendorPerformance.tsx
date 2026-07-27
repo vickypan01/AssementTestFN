@@ -1,30 +1,29 @@
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
-import { useSelector } from "react-redux";
-import type { RootState } from "../../store/redux_store";
+import { Chart } from "react-google-charts";
+import { useAppSelector } from "../../hooks/reduxhooks";
 
 const VendorPerformanceTrend = () => {
-  const data = useSelector(
-    (state: RootState) => state.dashboard.vendorPerformanceTrend,
+  const chartData = useAppSelector(
+    (state) => state.dashboard.vendorPerformanceTrend,
   );
 
-  const options: Highcharts.Options = {
-    title: {
-      text: "Vendor Performance Trend",
-    },
-    xAxis: {
-      categories: data.map((item) => item.month),
-    },
-    series: [
-      {
-        type: "line",
-        name: "Vendors",
-        data: data.map((item) => item.vendors),
-      },
-    ],
-  };
+  const data = [
+    ["Month", "Vendors"],
+    ...chartData.map((item) => [item.month, item.vendors]),
+  ];
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  return (
+    <Chart
+      chartType="LineChart"
+      width="100%"
+      height="350px"
+      data={data}
+      options={{
+        title: "Vendor Performance Trend",
+        legend: { position: "bottom" },
+        curveType: "function",
+      }}
+    />
+  );
 };
 
 export default VendorPerformanceTrend;

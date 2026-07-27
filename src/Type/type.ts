@@ -138,3 +138,55 @@ export interface DashboardState {
   monthlyPurchaseValue: MonthlyPurchaseValue[];
   vendorRatingDistribution: VendorRatingDistribution[];
 }
+
+export interface PerformanceMetric {
+  title: string;
+  value: number | string;
+  status: "Excellent" | "Good" | "Average" | "Poor";
+  color: string;
+}
+
+export interface PerformanceTrend {
+  month: string;
+  score: number;
+}
+
+export interface RecentIssue {
+  id: number;
+  issue: string;
+  severity: "High" | "Medium" | "Low";
+  date: string;
+  status: "Open" | "Resolved";
+}
+
+export interface VendorPerformanceState {
+  metrics: PerformanceMetric[];
+  trend: PerformanceTrend[];
+  recentIssues: RecentIssue[];
+}
+
+export interface PerformanceMetric {
+  title: string;
+  value: number | string;
+  status: string;
+  color: string;
+}
+
+export interface PerformanceTrend {
+  month: string;
+  score: number;
+}
+
+export interface RecentIssue {
+  id: number;
+  issue: string;
+  severity: "High" | "Medium" | "Low";
+  status: "Open" | "Resolved";
+  date: string;
+}
+
+export interface PerformanceState {
+  metrics: PerformanceMetric[];
+  trend: PerformanceTrend[];
+  recentIssues: RecentIssue[];
+}

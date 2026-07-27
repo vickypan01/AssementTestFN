@@ -1,17 +1,12 @@
-import VendorPerformanceTrend from "./vendorPerformance";
-import CategoryDistribution from "./categoryDistributtion";
-import MonthlyPurchase from "./monthlyPurchase";
-import VendorRatingDistribution from "./vendorRatingDistribution";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import * as HighchartsModule from "highcharts-react-official";
 
+console.log("HighchartsReact =", HighchartsReact);
+console.log("typeof =", typeof HighchartsReact);
+console.log(HighchartsModule);
 const Charts = () => {
-  return (
-    <>
-      <VendorPerformanceTrend />
-      <CategoryDistribution />
-      <MonthlyPurchase />
-      <VendorRatingDistribution />
-    </>
-  );
+  return <div>Hello</div>;
 };
 
 export default Charts;

@@ -29,6 +29,9 @@ const CategoryDistribution = () => {
     },
   };
 
+  console.log("HighchartsReact:", HighchartsReact);
+  console.log("typeof HighchartsReact:", typeof HighchartsReact);
+
   return <HighchartsReact highcharts={Highcharts} options={options} />;
 };
 

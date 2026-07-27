@@ -37,7 +37,9 @@ const LoginPage = () => {
 
       alert(`Welcome ${response.user.firstName}!\nRole: ${response.user.role}`);
 
-      navigate("/app");
+      navigate("/app", {
+        replace: true,
+      });
     } catch (err) {
       setError((err as Error).message);
     } finally {

@@ -36,8 +36,8 @@ export const users: User[] = [
   {
     id: 3,
     username: "employee",
-    email: "employee@example.com",
-    password: "Employee@123",
+    email: "employee@e.com",
+    password: "employee123",
     role: "EMPLOYEE",
     firstName: "David",
     lastName: "Brown",
@@ -47,8 +47,8 @@ export const users: User[] = [
   {
     id: 4,
     username: "hr",
-    email: "hr@example.com",
-    password: "Hr@123",
+    email: "hr@e.com",
+    password: "hr@123",
     role: "HR",
     firstName: "Emily",
     lastName: "Clark",

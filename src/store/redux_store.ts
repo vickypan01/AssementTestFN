@@ -1,6 +1,7 @@
 // app/store.ts
 
 import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "../services/authSlice";
 import { vendorApi } from "../services/vendorApi";
 import dashboardReducer from "../services/chartd_data";
 import performanceReducer from "../services/performanceSlice";
@@ -8,6 +9,7 @@ import approvalReducer from "../services/workFlow_slice";
 
 export const store = configureStore({
   reducer: {
+    auth: authReducer,
     dashboard: dashboardReducer,
     performance: performanceReducer,
     approval: approvalReducer,

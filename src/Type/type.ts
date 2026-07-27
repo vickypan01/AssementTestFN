@@ -76,3 +76,65 @@ export interface Vendor {
     insuranceDocument: string;
   }[];
 }
+
+export interface VendorFormData {
+  vendorName: string;
+
+  gst: string;
+
+  pan: string;
+
+  vendorCategory: string;
+
+  address: {
+    line1: string;
+    city: string;
+    state: string;
+    pincode: string;
+  };
+
+  contactDetails: {
+    name: string;
+    email: string;
+    phone: string;
+  };
+
+  bankDetails: {
+    accountName: string;
+    accountNumber: string;
+    ifsc: string;
+  };
+
+  paymentTerms: string;
+
+  certifications: string;
+
+  documents: FileList;
+}
+
+export interface VendorPerformance {
+  month: string;
+  vendors: number;
+}
+
+export interface VendorCategoryDistribution {
+  name: string;
+  y: number;
+}
+
+export interface MonthlyPurchaseValue {
+  month: string;
+  value: number;
+}
+
+export interface VendorRatingDistribution {
+  rating: string;
+  value: number;
+}
+
+export interface DashboardState {
+  vendorPerformanceTrend: VendorPerformance[];
+  vendorCategoryDistribution: VendorCategoryDistribution[];
+  monthlyPurchaseValue: MonthlyPurchaseValue[];
+  vendorRatingDistribution: VendorRatingDistribution[];
+}

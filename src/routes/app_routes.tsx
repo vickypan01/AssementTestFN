@@ -6,20 +6,24 @@ import {
 } from "react-router-dom";
 
 import RouteLayout from "../layout/app_layout";
-import VendorTable from "../pages/vendor_directory/venders";
 import ProtectedRoute from "../routes/protectted_routes";
 import Unauthorized from "../pages/Unauthorized";
+
 import { USER_ROLE } from "../app_constants/common_constants";
-import Dashboard from "../pages/Dashboard/dashboard";
+
+import KPICard from "../pages/KPI/kpidata";
+import VendorTable from "../pages/vendor_directory/venders";
 import VendorDetails from "../pages/vendor_directory/vendorDetails";
+import CreateVendor from "../pages/vendor_directory/createVendor";
+import VendorPerformance from "../pages/vendor_directory/performance";
+import ApprovalWorkflow from "../pages/vendor_directory/approvalWorkflow";
+import Charts from "../pages/Dashboard/charts";
 
 const AppRoutes = createBrowserRouter(
   createRoutesFromElements(
     <>
-      {/* Root redirect */}
-      <Route path="/" element={<Navigate to="/app/dashboard" replace />} />
+      <Route path="/" element={<Navigate to="/app" replace />} />
 
-      {/* Protected Application Routes */}
       <Route
         path="/app"
         element={
@@ -34,14 +38,15 @@ const AppRoutes = createBrowserRouter(
           />
         }
       >
-        {/* Default /app route */}
-        <Route index element={<Dashboard />} />
-
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route index element={<KPICard />} />
+        <Route path="charts" element={<Charts />} />
+        <Route path="kpi" element={<KPICard />} />
 
         <Route path="vendor-directory" element={<VendorTable />} />
-
+        <Route path="create-vendor" element={<CreateVendor />} />
         <Route path="vendors/:vendorId" element={<VendorDetails />} />
+        <Route path="performance" element={<VendorPerformance />} />
+        <Route path="approval-workflow" element={<ApprovalWorkflow />} />
 
         <Route path="unauthorized" element={<Unauthorized />} />
       </Route>

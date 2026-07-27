@@ -1,192 +1,231 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import "../index.css";
 
-const AppHeader: React.FC = () => {
+const AppHeader = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [examplesOpen, setExamplesOpen] = useState(false);
+  const [formsOpen, setFormsOpen] = useState(false);
+
   return (
-    <div className="container-fluid px-0">
-      <header>
-        <nav className="navbar navbar-expand-lg bd-navbar">
-          <div className="container-fluid">
-            <Link className="navbar-brand" to="/">
-              VP
-            </Link>
+    <header className="w-full border-b bg-white shadow-sm">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <Link to="/" className="text-2xl font-bold tracking-wide text-blue-600">
+          VP
+        </Link>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="rounded-md border p-2 lg:hidden"
+        >
+          ☰
+        </button>
+
+        {/* Navigation */}
+        <div
+          className={`${
+            menuOpen ? "flex" : "hidden"
+          } absolute left-0 top-16 z-50 w-full flex-col bg-white shadow-md lg:static lg:flex lg:w-auto lg:flex-row lg:items-center lg:space-x-6 lg:bg-transparent lg:shadow-none`}
+        >
+          <Link
+            to="layout"
+            className="px-4 py-2 text-gray-700 transition hover:text-blue-600"
+          >
+            Dashboard
+          </Link>
+
+          <Link
+            to="second-component"
+            className="px-4 py-2 text-gray-700 transition hover:text-blue-600"
+          >
+            Two
+          </Link>
+
+          <Link
+            to="third"
+            className="px-4 py-2 text-gray-700 transition hover:text-blue-600"
+          >
+            Three
+          </Link>
+
+          <Link
+            to="vendor-directory"
+            className="px-4 py-2 text-gray-700 transition hover:text-blue-600"
+          >
+            Vendor Directory
+          </Link>
+
+          <div className="relative">
             <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+              onClick={() => setExamplesOpen(!examplesOpen)}
+              className="flex w-full items-center justify-between px-4 py-2 text-gray-700 hover:text-blue-600 lg:w-auto"
             >
-              <span className="navbar-toggler-icon"></span>
+              Examples
+              <span className="ml-2">▼</span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    aria-current="page"
-                    to="first-component"
-                  >
-                    One
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="second-component">
-                    Two
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="third">
-                    Three
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="Four">
-                    Fourth
-                  </Link>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    id="navbarDropdownMenuLink"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Dropdown link
-                  </a>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <Link className="dropdown-item" to="tableOne">
-                        Tables
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="webSocketOne">
-                        Web Scoket Example
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="google-map">
-                        Google Map 01
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="lazyLoading">
-                        Lazy Loading Example
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="GraphqlAPI">
-                        Graph QL API Example
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="subchild">
-                        Sub Child Component
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="jwt-token">
-                        JWT Token Example
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="common-form">
-                        Common Form Example
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="nav-link" to="detail-table">
-                        Table with Detail Popup
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="nav-link" to="scroll-load">
-                        Scroll to Load More
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    id="navbarCommonForms"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Common Forms
-                  </a>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarCommonForms"
-                  >
-                    <li>
-                      <Link className="dropdown-item" to="normal-form">
-                        Normal Form
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="step-form">
-                        Step Form
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="google-map">
-                        Tabbed Form
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="lazyLoading">
-                        Dynamic Form
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="GraphqlAPI">
-                        Repeated / Field Array Form
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="subchild">
-                        Modal Form (Popup Form)
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="jwt-token">
-                        Search / Filter Form
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="common-form">
-                        Progressive Form
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="nav-link" to="detail-table">
-                        File Upload Form
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="nav-link" to="heavy-validation-form">
-                        Validation-Heavy Form
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
+
+            {examplesOpen && (
+              <div className="absolute left-0 mt-2 w-64 rounded-md border bg-white shadow-lg">
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="tableOne"
+                >
+                  Tables
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="webSocketOne"
+                >
+                  WebSocket Example
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="google-map"
+                >
+                  Google Map
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="lazyLoading"
+                >
+                  Lazy Loading
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="GraphqlAPI"
+                >
+                  GraphQL API
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="subchild"
+                >
+                  Sub Child
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="jwt-token"
+                >
+                  JWT Token
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="common-form"
+                >
+                  Common Form
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="detail-table"
+                >
+                  Table Detail Popup
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="scroll-load"
+                >
+                  Scroll Load More
+                </Link>
+              </div>
+            )}
           </div>
-        </nav>
-      </header>
-    </div>
+
+          <div className="relative">
+            <button
+              onClick={() => setFormsOpen(!formsOpen)}
+              className="flex w-full items-center justify-between px-4 py-2 text-gray-700 hover:text-blue-600 lg:w-auto"
+            >
+              Common Forms
+              <span className="ml-2">▼</span>
+            </button>
+
+            {formsOpen && (
+              <div className="absolute left-0 mt-2 w-72 rounded-md border bg-white shadow-lg">
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="normal-form"
+                >
+                  Normal Form
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="step-form"
+                >
+                  Step Form
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="google-map"
+                >
+                  Tabbed Form
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="lazyLoading"
+                >
+                  Dynamic Form
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="GraphqlAPI"
+                >
+                  Repeated / Field Array
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="subchild"
+                >
+                  Modal Form
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="jwt-token"
+                >
+                  Search / Filter
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="common-form"
+                >
+                  Progressive Form
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="detail-table"
+                >
+                  File Upload
+                </Link>
+
+                <Link
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  to="heavy-validation-form"
+                >
+                  Validation Heavy
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+      </nav>
+    </header>
   );
 };
 

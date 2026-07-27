@@ -190,3 +190,57 @@ export interface PerformanceState {
   trend: PerformanceTrend[];
   recentIssues: RecentIssue[];
 }
+
+export type VendorStatus = "Pending" | "Approved" | "Rejected" | "On Hold";
+
+export interface ApprovalHistory {
+  id: number;
+  title: string;
+  user: string;
+  date: string;
+  status: VendorStatus;
+}
+
+export interface ApprovalComment {
+  id: number;
+  user: string;
+  date: string;
+  message: string;
+}
+
+export interface ApprovalState {
+  vendorId: number;
+  vendorName: string;
+  currentStatus: VendorStatus;
+  timeline: ApprovalHistory[];
+  comments: ApprovalComment[];
+}
+
+export type VendorApprovalStatus =
+  | "Pending"
+  | "Approved"
+  | "Rejected"
+  | "On Hold";
+
+export interface ApprovalTimelineItem {
+  id: number;
+  title: string;
+  user: string;
+  date: string;
+  status: VendorApprovalStatus;
+}
+
+export interface ApprovalComment {
+  id: number;
+  user: string;
+  date: string;
+  message: string;
+}
+
+export interface ApprovalStateWorkFlow {
+  vendorId: number;
+  vendorName: string;
+  status: VendorApprovalStatus;
+  timeline: ApprovalTimelineItem[];
+  comments: ApprovalComment[];
+}

@@ -16,7 +16,7 @@ import VendorTable from "../pages/vendor_directory/venders";
 import VendorDetails from "../pages/vendor_directory/vendorDetails";
 import CreateVendor from "../pages/vendor_directory/createVendor";
 import Performance from "../pages/PerformanceData/performancePage";
-import ApprovalWorkflow from "../pages/vendor_directory/approvalWorkflow";
+import ApprovalWorkflow from "../pages/workflow/approvalWorkflow";
 import Charts from "../pages/Dashboard/charts";
 
 const AppRoutes = createBrowserRouter(

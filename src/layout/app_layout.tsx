@@ -6,7 +6,7 @@ const RouteLayout: React.FC = () => {
   return (
     <>
       <AppHeader />
-      <div className="container pb-4">
+      <div className="w-full min-h-screen bg-gray-100 p-4">
         <Outlet />
       </div>
     </>

@@ -7,14 +7,12 @@ const AppHeader = () => {
   const [formsOpen, setFormsOpen] = useState(false);
 
   return (
-    <header className="w-full border-b bg-white shadow-sm">
+    <header className="w-full border-b bg-skyblue-300 shadow-sm">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        {/* Logo */}
         <Link to="/" className="text-2xl font-bold tracking-wide text-blue-600">
-          VP
+          FieldNerve Technology
         </Link>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="rounded-md border p-2 lg:hidden"

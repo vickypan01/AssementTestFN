@@ -1,68 +1,48 @@
-import type { ColumnDef } from "@tanstack/react-table";
-import type { Vendor } from "../../dummy_data/verdor_directory_data";
+import type { Vendor } from "../../Type/type";
 
-export const vendorColumns: ColumnDef<Vendor>[] = [
+export const vendorColumns = [
   {
-    accessorKey: "vendorName",
-    header: "Vendor Name",
-  },
-  {
-    accessorKey: "vendorCode",
     header: "Vendor Code",
+    accessorKey: "vendorCode",
   },
+
   {
-    accessorKey: "category",
+    header: "Vendor Name",
+    accessorKey: "vendorName",
+  },
+
+  {
     header: "Category",
+    accessorKey: "category",
   },
+
   {
-    accessorKey: "contactPerson",
     header: "Contact Person",
+    accessorFn: (row: Vendor) => row.contacts.primaryContact,
   },
+
   {
-    accessorKey: "city",
     header: "City",
+    accessorKey: "city",
   },
+
   {
-    accessorKey: "rating",
     header: "Rating",
-    cell: ({ getValue }) => (
-      <div className="flex items-center gap-1">⭐ {getValue<number>()}</div>
-    ),
+    accessorFn: (row: Vendor) => row.overview.rating,
   },
+
   {
-    accessorKey: "status",
     header: "Status",
-    cell: ({ getValue }) => {
-      const status = getValue<string>();
-
-      const styles = {
-        Active: "bg-green-100 text-green-700",
-        Pending: "bg-yellow-100 text-yellow-700",
-        Inactive: "bg-red-100 text-red-700",
-      };
-
-      return (
-        <span
-          className={`rounded-full px-3 py-1 text-xs font-semibold ${
-            styles[status as keyof typeof styles] ?? "bg-gray-100 text-gray-700"
-          }`}
-        >
-          {status}
-        </span>
-      );
-    },
+    accessorFn: (row: Vendor) => row.overview.status,
   },
+
   {
-    accessorKey: "lastTransaction",
-    header: "Last Transaction",
-  },
-  {
-    accessorKey: "totalPurchaseValue",
     header: "Purchase Value",
-    cell: ({ getValue }) => (
-      <span className="font-semibold text-blue-600">
-        ${Number(getValue()).toLocaleString()}
-      </span>
-    ),
+    accessorFn: (row: Vendor) => row.purchaseHistory.totalPurchaseValue,
+  },
+
+  {
+    header: "Active Orders",
+    accessorFn: (row: Vendor) => row.purchaseHistory.activePurchaseOrders,
   },
 ];

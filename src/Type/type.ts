@@ -165,13 +165,6 @@ export interface VendorPerformanceState {
   recentIssues: RecentIssue[];
 }
 
-export interface PerformanceMetric {
-  title: string;
-  value: number | string;
-  status: string;
-  color: string;
-}
-
 export interface PerformanceTrend {
   month: string;
   score: number;

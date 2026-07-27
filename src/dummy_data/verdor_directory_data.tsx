@@ -54,6 +54,12 @@ const statuses: Vendor["overview"]["status"][] = [
 ];
 
 export const vendors: Vendor[] = Array.from({ length: 100 }, (_, index) => {
+  const vendorName = vendorNames[index % vendorNames.length]!;
+  const category = categories[index % categories.length]!;
+  const city = cities[index % cities.length]!;
+  const contact = contactPersons[index % contactPersons.length]!;
+  const status = statuses[index % statuses.length]!;
+
   const totalPurchase = Number((Math.random() * 900000 + 100000).toFixed(2));
 
   return {
@@ -61,14 +67,14 @@ export const vendors: Vendor[] = Array.from({ length: 100 }, (_, index) => {
 
     vendorCode: `VEN-${String(index + 1).padStart(4, "0")}`,
 
-    vendorName: `${vendorNames[index % vendorNames.length]} ${index + 1}`,
+    vendorName: `${vendorName} ${index + 1}`,
 
-    category: categories[index % categories.length],
+    category,
 
-    city: cities[index % cities.length],
+    city,
 
     overview: {
-      status: statuses[index % statuses.length],
+      status,
 
       rating: Number((Math.random() * 4 + 1).toFixed(1)),
 
@@ -78,13 +84,13 @@ export const vendors: Vendor[] = Array.from({ length: 100 }, (_, index) => {
 
       registrationDate: `202${index % 5}-0${(index % 9) + 1}-15`,
 
-      city: cities[index % cities.length],
+      city,
 
       address: `${index + 10} Business Street`,
     },
 
     contacts: {
-      primaryContact: contactPersons[index % contactPersons.length],
+      primaryContact: contact,
 
       email: `vendor${index + 1}@company.com`,
 
@@ -114,7 +120,7 @@ export const vendors: Vendor[] = Array.from({ length: 100 }, (_, index) => {
 
       lastTransaction: new Date(2025, index % 12, (index % 28) + 1)
         .toISOString()
-        .split("T")[0],
+        .split("T")[0]!,
 
       totalOrders: Math.floor(Math.random() * 200) + 20,
 
@@ -123,7 +129,6 @@ export const vendors: Vendor[] = Array.from({ length: 100 }, (_, index) => {
       monthlyPurchases: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"].map(
         (month) => ({
           month,
-
           amount: Math.floor(Math.random() * 100000),
         }),
       ),
